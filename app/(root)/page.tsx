@@ -15,7 +15,7 @@ const setupPage = () => {
 
   return (
     <div className='p-4'>
-      <StoreModal/>
+      Root
     </div>
   )
 }
