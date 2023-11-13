@@ -1,5 +1,6 @@
 import { UserButton } from "@clerk/nextjs";
 import { MainNav } from "./main-nav";
+import StoreSwitcher from "./store-switcher";
 
 const Navbar = () => {
   return (
@@ -8,9 +9,7 @@ const Navbar = () => {
     >
       <div
         className="flex h-16 items-center px-4">
-        <div>
-          This will be a store switcher
-        </div>
+        <StoreSwitcher />
         <MainNav
           className="mx-6" />
         <div
