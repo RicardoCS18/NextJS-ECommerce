@@ -8,7 +8,8 @@ import { Separator } from "@/components/ui/separator"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
-import { Form, FormField, FormItem, FormLabel } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 
 interface SettingsFormProps {
   initialData: Store,
@@ -44,9 +45,10 @@ const SettingsForm: React.FC<SettingsFormProps> = ({
           description="Manage store preferences"
         />
         <Button
+          disabled={loading}
           variant="destructive"
           size="icon"
-          onClick={() => { }}>
+          onClick={() => { setOpen(true) }}>
           <Trash className="h-4 w-4" />
         </Button>
       </div>
@@ -64,10 +66,16 @@ const SettingsForm: React.FC<SettingsFormProps> = ({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Name </FormLabel>
+                  <FormControl>
+                    <Input disabled={loading} placeholder="Store name" {...field} />
+                  </FormControl>
                 </FormItem>
               )}
             />
           </div>
+          <Button disabled={loading} className="ml-auto" type="submit">
+            Save changes
+          </Button>
         </form>
       </Form>
     </>
