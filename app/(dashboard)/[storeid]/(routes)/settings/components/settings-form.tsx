@@ -16,6 +16,7 @@ import { useState } from "react"
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { AlertModal } from "@/components/modals/alert-modal"
+import { ApiAlert } from "@/components/ui/api-alert"
 
 interface SettingsFormProps {
   initialData: Store,
@@ -52,6 +53,21 @@ const SettingsForm: React.FC<SettingsFormProps> = ({
       toast.error("Something went wrong")
     } finally {
       setLoading(false);
+    }
+  }
+
+  const onDelete = async () => {
+    try {
+      setLoading(true)
+      await axios.delete(`/api/store/${params.storeId}`)
+      router.refresh();
+      router.push("/");
+      toast.success("Store deleted")
+    } catch (error) {
+      toast.error("Make sure you removed all products and catyegories first.")
+    } finally {
+      setLoading(false);
+      setOpen(false);
     }
   }
 
@@ -102,6 +118,8 @@ const SettingsForm: React.FC<SettingsFormProps> = ({
           </Button>
         </form>
       </Form>
+      <Separator />
+      <ApiAlert title="test" description="test-desc/>
     </>
   )
 }
