@@ -66,7 +66,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({
       router.push("/");
       toast.success("Store deleted")
     } catch (error) {
-      toast.error("Make sure you removed all products and catyegories first.")
+      toast.error("Make sure you removed all products and categories first.")
     } finally {
       setLoading(false);
       setOpen(false);
